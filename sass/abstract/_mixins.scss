@@ -1,0 +1,245 @@
+// ==========================================================================
+// Title Base
+// ==========================================================================
+@mixin title-base {
+  font-size: pxtoem(60);
+  // color: socialColor(facebook);
+  color: mainColors(success), 15%;
+  z-index: z-index(above);
+}
+// ==========================================================================
+// Button Base
+// ==========================================================================
+// .outlined{
+//   background: none !important;
+//   border: 1px solid rgba(255, 0, 0, 0.7) !important;
+//   color: red !important;
+//   box-shadow: none !important;
+
+//   &:hover{
+//     background: rgba(255, 0, 0, 0.2) !important;
+//     border: 1px solid rgba(255, 0, 0, 1) !important;
+//   }
+// }
+
+// .border-none{
+//   border: none !important;
+
+//   &:hover{
+//     border: none !important;
+//   }
+// }
+
+@mixin btn-base($bg: white, $color: white) {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    min-width: 110px;
+    min-height: 46px;
+    padding: pxtoem(12) pxtoem(40);
+    color: $color;
+    font-weight: 700;
+    border: none;
+    border-radius: pxtoem(5);
+    background: $bg;
+    box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+    transition: all 0.2s linear;
+  
+    &:hover {
+      cursor: pointer;
+      background: darken($bg, 5);
+    }
+  
+    &:active {
+      transform: scale(0.95);
+    }
+}
+
+// ==========================================================================
+// Button Rouded
+// ==========================================================================
+@mixin btn-rounded($bg: white, $color: white, $size: 50px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  color: $color;
+  border: none;
+  border-radius: 50%;
+  background: $bg;
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  transition: all 0.2s linear;
+
+  &:hover {
+    cursor: pointer;
+    background: darken($bg, 5);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// ==========================================================================
+// Box-shadown
+// ==========================================================================
+@mixin box-shadow($type: 1) {
+  @if $type == 1{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }@else if $type == 2{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 24px;
+  }@else if $type == 3{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 36px;
+  }@else if $type == 4{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 48px;
+  }@else{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  }
+
+  
+}
+
+// ==========================================================================
+// Checkbox
+// ==========================================================================
+@mixin input-checkbox($colorOFF: #bdbdbd, $colorON: #90CAF9) {
+    $widthBefore: 36px;
+    $circleAfter: 20px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: $widthBefore;
+    height: $circleAfter;
+    visibility: hidden;
+    cursor: pointer;
+    -moz-appearance: initial;
+
+    &::before{
+      content: "";
+      position: absolute;
+      width: $widthBefore;
+      height: 14px;
+      border-radius: pxtoem(10);
+      background: lighten($colorOFF, 10);
+      visibility: initial;
+    }
+
+    &::after{
+      content: "";
+      position: absolute;
+      left: 0px;
+      width: $circleAfter;
+      height: $circleAfter;
+      border-radius: 50%;
+      background: $colorOFF;
+      visibility: initial;
+      transition: all 0.2s ease;
+    }
+
+    &:hover{
+      &::after{
+        box-shadow: 0px 0px 0px 7px rgba($colorOFF, 0.2);
+      }
+    }
+
+    &:checked{
+      &:hover{
+        &::after{
+          box-shadow: 0px 0px 0px 7px rgba($colorON, 0.2);
+        }
+      }
+
+      &::before{
+        background: darken($colorON, 12);
+      }
+
+      &::after{
+        background: $colorON;
+        // width igual do before
+        transform: translateX(calc(36px - 100%));
+      }
+    }
+}
+
+@mixin input-radio($border: #8a8787, $checkON: #90CAF9) {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  cursor: pointer;
+  visibility: hidden;
+  -moz-appearance: initial;
+
+  &::after{
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid $border;
+    visibility: initial;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+
+  &::before{
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $checkON;
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+    visibility: initial;
+  }
+
+  &:hover{
+    &::after{
+      -webkit-box-shadow: 0px 0px 0px 7px rgba($border, 0.1),
+                  inset 0px 0px 0px 10px rgba($border, 0.1);
+              box-shadow: 0px 0px 0px 7px rgba($border, 0.1),
+                  inset 0px 0px 0px 10px rgba($border, 0.1);
+    }
+
+    &:checked{
+      &::after{
+        -webkit-box-shadow: 0px 0px 0px 7px rgba($checkON, 0.2),
+        inset 0px 0px 0px 10px rgba($checkON, 0.2);
+                box-shadow: 0px 0px 0px 7px rgba($checkON, 0.2),
+        inset 0px 0px 0px 10px rgba($checkON, 0.2);;
+      }
+    }
+  }
+    
+  &:checked{
+    &::before{
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1);
+      -webkit-transition: all 0.1s linear;
+      -o-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+    }
+
+    &::after{
+      -webkit-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+      transition: all 0.3s linear;
+      border: 2px solid $checkON;
+    }
+  }
+}

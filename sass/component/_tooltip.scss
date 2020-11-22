@@ -1,0 +1,120 @@
+// [data-tooltip] {
+//   position: relative;
+
+//   &::before,
+//   &::after {
+//     display: none;
+//   }
+
+//   &::before {
+//     content: attr(data-tooltip);
+//     position: absolute;
+//     bottom: 150%;
+//     max-width: 200px;
+//     width: auto;
+//     padding: 10px;
+//     text-align: center;
+//     color: white;
+//     border-radius: pxtoem(5);
+//     background: black;
+//   }
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     bottom: 140%;
+//     left: 50%;
+//     margin-left: -5px;
+//     width: 0;
+//     border-top: 5px solid #000;
+//     border-top: 5px solid black;
+//     border-right: 5px solid transparent;
+//     border-left: 5px solid transparent;
+//     font-size: 0;
+//     line-height: 0;
+//   }
+
+//   &:hover::before,
+//   &:hover::after {
+//     display: block;
+//     animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//   }
+// }
+
+// @keyframes scale-in-center {
+//   0% {
+//     -webkit-transform: translateY(-10px);
+//     transform: translateY(-10px);
+//     opacity: 0;
+//   }
+//   100% {
+//     -webkit-transform: translateY(0px);
+//     transform: translateY(0px);
+//     opacity: 1;
+//   }
+// }
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  max-width: 200px;
+  width: auto;
+  padding: 10px;
+  font-size: pxtoem(16);
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  border-radius: pxtoem(5);
+  background: black;
+  pointer-events: none;
+
+  &.active {
+    display: block;
+    animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  &.up {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      margin-left: -5px;
+      width: 0;
+      border-top: 5px solid black;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      font-size: 0;
+      line-height: 0;
+    }
+  }
+
+  &.right {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -5px;
+      margin-left: -4px;
+      width: 0;
+      border-top: 5px solid transparent;
+      border-right: 5px solid black;
+      border-left: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      transform: translateY(-50%);
+      font-size: 0;
+      line-height: 0;
+    }
+  }
+}
+
+@keyframes scale-in-center {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "basic-front-boilerplate",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/desenvolvweb/basic-front-boilerplate#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "sass": "^1.23.3"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
+}

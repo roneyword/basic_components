@@ -1,0 +1,91 @@
+.carousel.fade-in {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .carousel--controler {
+    .carousel--controler--prev,
+    .carousel--controler--next {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0px;
+      width: 20%;
+      height: 100%;
+      background: transparent;
+      cursor: pointer;
+      z-index: z-index(default);
+
+      i {
+        font-size: pxtoem(70);
+        color: white;
+        opacity: 0.5;
+        transition: all 0.2s ease-in;
+      }
+
+      &:hover {
+        i {
+          opacity: 1;
+        }
+      }
+    }
+
+    .carousel--controler--prev {
+      left: 0px;
+    }
+
+    .carousel--controler--next {
+      right: 0px;
+    }
+  }
+
+  .carousel--indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: z-index(default);
+
+    span {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-left: 5px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.5;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &.active {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .carousel--container {
+    position: relative;
+
+    .carousel--item {
+      position: absolute;
+      top: 0px;
+      left: 0;
+      min-width: 100vw;
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease-in;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

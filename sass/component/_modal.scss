@@ -1,0 +1,228 @@
+body.hidden {
+  overflow: hidden;
+}
+
+.modal-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: z-index(modal);
+
+  &.fadeIn {
+    display: flex;
+
+    .modal {
+      animation: fadeIn 0.3s ease-out both;
+      animation-delay: 0.2s;
+
+      .modal--title {
+        animation: fadeIn 0.3s ease-out both;
+        animation-delay: 0.3s;
+      }
+
+      .modal--content {
+        animation: fadeIn 0.3s ease-out both;
+        animation-delay: 0.3s;
+      }
+
+      .modal--footer {
+        animation: fadeIn 0.3s ease-out both;
+        animation-delay: 0.3s;
+      }
+    }
+  }
+
+  &.zoomIn {
+    display: flex;
+
+    .modal {
+      animation: zoomIn 0.3s ease-out;
+      animation-delay: zoomIn 0.2s;
+    }
+  }
+
+  &.jello {
+    display: flex;
+
+    .modal {
+      animation: jello 0.9s ease-out;
+      animation-delay: jello 0.2s;
+    }
+  }
+
+  &.zoomOut {
+    display: flex;
+
+    .modal {
+      animation: zoomOut 0.3s ease-out both;
+      animation-delay: 0.2s;
+    }
+  }
+
+  &.slideIn {
+    display: flex;
+
+    .modal {
+      animation: slideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: 0.2s;
+    }
+  }
+
+  .modal {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 0px 20px;
+    border-radius: pxtoem(5);
+    background: white;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    will-change: transform;
+
+    .modal--close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      padding: 5px 10px;
+      font-size: pxtoem(28);
+      transition: all 0.3s ease-in-out;
+      z-index: 10;
+
+      &:hover {
+        transform: rotate(360deg);
+        color: red;
+        cursor: pointer;
+      }
+    }
+
+    .modal--title {
+      position: relative;
+      margin-bottom: 30px;
+      font-size: pxtoem(24);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        width: 100%;
+        height: 1px;
+        background: #eee;
+      }
+    }
+
+    .modal--content {
+      margin-bottom: 30px;
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      span {
+        color: #444;
+        font-size: pxtoem(16);
+        font-weight: 400;
+        line-height: 1.75 !important;
+      }
+    }
+
+    .modal--footer {
+      display: flex;
+      justify-content: flex-end;
+
+      a {
+        &:nth-child(1) {
+          @include btn-base(#2ecc71);
+          margin-right: 10px;
+        }
+
+        &:nth-child(2) {
+          @include btn-base(#e74c3c);
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes jello {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+    transform: translateY(-600px) rotateX(-30deg) scale(0);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotateX(0) scale(1);
+    transform: translateY(0) rotateX(0) scale(1);
+    -webkit-transform-origin: 50% 1400px;
+    transform-origin: 50% 1400px;
+    opacity: 1;
+  }
+}

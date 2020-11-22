@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+// ==========================================================================
+// Abstract
+// ==========================================================================
+
+@import "abstract/functions";
+@import "abstract/variables";
+@import "abstract/mixins";
+
+// ==========================================================================
+// Vendor
+// ==========================================================================
+
+@import "vendor/normalize";
+
+// ==========================================================================
+// Base
+// ==========================================================================
+
+@import "base/fonts";
+
+// ==========================================================================
+// Pages
+// ==========================================================================
+
+// @import "pages/l-";
+
+// ==========================================================================
+// Component
+// ==========================================================================
+
+@import "component/header";
+// @import "component/carousel";
+// @import "component/carousel_fade_in";
+// @import "component/modal";
+@import "component/toast";
+@import "component/tooltip";
+@import "component/accordion";
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: pxtoem(5);
+  @include box-shadow(1);
+  border: 1px solid rgba(grey, 0.2);
+}
+
+.container-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: pxtoem(5);
+  @include box-shadow(1);
+  border: 1px solid rgba(grey, 0.2);
+}
+
+.title{
+  align-self: center;
+  margin-bottom: 30px;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+}
+.button1 {
+  @include btn-base(blue);
+}
+.button2 {
+  @include btn-base(darkred);
+}
+.button3 {
+  @include btn-base(yellow, black);
+}
+.button4 {
+  @include btn-base(purple);
+}
+.button5 {
+  margin-left: 20px;
+  @include btn-base(darkblue);
+}
+a {
+  margin-left: 20px;
+}
+ 
+.button-r1 {
+  @include btn-rounded(blue);
+}
+.button-r2 {
+  @include btn-rounded(darkred);
+}
+.button-r3 {
+  @include btn-rounded(yellow, black);
+}
+.button-r4 {
+  @include btn-rounded(purple);
+}
+
+.button-r5 {
+  margin-left: 20px;
+  @include btn-rounded(darkblue);
+}
+
+a {
+  margin-left: 20px;
+}
+
+.btn-tooltip{
+  margin-left: 20px;
+  @include btn-base(darkblue);
+}   
+
+.box{
+  width: 150px;
+  height: 150px;
+  border-radius: pxtoem(5);
+  margin-left: 70px;
+  
+  &.um{
+    margin-left: 0px;
+    @include box-shadow(1);
+  }
+  &.dois{
+    @include box-shadow(2);
+  }
+  &.tres{
+    @include box-shadow(3);
+  }
+  &.quatro{
+    @include box-shadow(4);
+  }
+  &.cinco{
+    @include box-shadow(5);
+  }
+}
+
+.check1{
+  @include input-checkbox;
+}
+.check2{
+  @include input-checkbox(#bdbdbd, #d83e45);
+}
+.check3{
+  @include input-checkbox(black, lightblue);
+}
+.check4{
+  @include input-checkbox(green, yellow);
+}
+.check5{
+  // @extend .check1;
+  @include input-checkbox(purple, darkblue);
+}
+  
+.radio1{
+  @include input-radio(black, lightgreen);
+}
+.radio2{
+  @include input-radio(black, lightgreen);
+}
+.radio3{
+  @include input-radio(black, lightgreen);
+}
+.radio4{
+  @include input-radio(black, lightgreen);
+}
+.radio5{
+  @include input-radio(black, lightgreen);
+}
+.radio6{
+  @include input-radio(black, lightgreen);
+}
